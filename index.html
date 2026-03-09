@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在導向...</title>
+    
+    <!-- GA4 追蹤碼 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <script>
+        // 你的 QR Code 對應清單
+        // 左邊是短 ID (印在 QR Code 網址尾巴 ?id=xxx)，右邊是真實長網址
+        const links = {
+            // FLS-Fencing Centre
+            "fls-p": "https://www.stheadline.com/parenting/3539043/%E9%81%8B%E5%8B%95%E6%95%99%E8%82%B2%E5%9F%BA%E7%9D%A3%E6%95%99%E9%A6%99%E6%B8%AF%E4%BF%A1%E7%BE%A9%E6%9C%83%E6%B7%B1%E4%BF%A1%E5%AD%B8%E6%A0%A1%E8%90%BD%E6%88%90%E6%AF%94%E8%B3%BD%E7%B4%9A%E5%8A%8D%E6%93%8A%E9%A4%A8-%E5%8A%A9%E5%AD%B8%E7%94%9F%E6%95%B4%E9%AB%94%E7%99%BC%E5%B1%95%E9%BD%8A%E5%85%A8%E4%B8%89%E9%A0%85%E5%8A%8D%E7%A8%AE%E6%A0%A1%E9%9A%8A",
+            
+            // MOSTTSS-Activity Hub
+            "mos-w": "https://www.the3teacher.com/school-planning3",
+            "mos-p": "https://www.stheadline.com/edu-hot-topics/3521107/%E5%8A%8D%E6%93%8A%E7%86%B1%E6%BD%AE%E5%9C%B0%E5%8D%80%E4%B8%AD%E5%B0%8F%E5%AD%B8%E8%A8%AD%E6%AF%94%E8%B3%BD%E7%B4%9A%E5%8A%8D%E6%93%8A%E9%A4%A8-%E5%9F%B9%E8%82%B2%E6%96%B0%E4%B8%80%E4%BB%A3%E5%8A%8D%E7%A5%9E%E5%8A%8D%E5%90%8E",
+            
+            // TTC-Library
+            "ttc-p": "https://www.stheadline.com/knowledge/3544460",
+            
+            // SingYing-Library
+            "sy-w": "https://www.the3teacher.com/library-10-%E8%81%96%E8%A8%80%E4%B8%AD%E5%AD%B8",
+            
+            // STTS-Library
+            "stts-w": "https://www.the3teacher.com/library6",
+            
+            // LWLC-HistoryCorridor
+            "lwlc-w": "https://www.the3teacher.com/historycorridor2",
+            
+            // BHSS-Co-work
+            "bhss-w": "https://www.the3teacher.com/multi-purpose-room-1",
+            
+            // TPBPS-ScrabbleSky
+            "tpb-w": "https://www.the3teacher.com/english-room-1",
+            
+            // KMSCH-Lobby
+            "kms-w": "https://www.the3teacher.com/lobby-3",
+            
+            // BRPS-Library
+            "brps-w": "https://www.the3teacher.com/library2",
+            "brps-p": "https://www.youtube.com/watch?v=7I_wzbM6q_I&ab_channel=UMagazineHKOfficial"
+        };
+        
+        // 獲取 URL 參數
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        
+        // 自訂 GA4 事件：記錄掃描的 ID
+        if (id) {
+            gtag('event', 'qr_scan', {
+                'id': id,
+                'page_path': window.location.pathname + '?id=' + id
+            });
+        }
+        
+        // 如果找不到 id，預設跳轉到官網
+        const targetUrl = links[id] || "https://www.the3teacher.com/";
+        
+        // 延遲 1.2 秒確保 GA4 數據送出
+        setTimeout(function() {
+            window.location.href = targetUrl;
+        }, 1200);
+    </script>
+    
+    <style>
+        body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: #666; background: #fafafa; }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <p>正在為您導向網頁，請稍候...</p>
+    </div>
+</body>
+</html>
